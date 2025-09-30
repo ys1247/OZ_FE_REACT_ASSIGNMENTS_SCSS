@@ -1,0 +1,65 @@
+// 변수 지정
+$main-color: #d7fa00;
+$text-gray: rgb(160, 160, 160);
+
+// 믹스인 선언
+@mixin flex($justify: flex-start, $align: stretch, $direction: row, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin font($size: 14px, $weight: 400, $color: black) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+// 스타일 작성
+.header-container {
+  @include flex(space-between, center);
+  padding: 10px 20px;
+  background-color: black;
+
+  ul {
+    @include flex(center, center, row, 20px);
+
+    li {
+      list-style: none;
+      @include font(13px, 400, white);
+    }
+  }
+}
+
+section {
+  @include flex(flex-start, flex-start, row, 20px);
+  flex-wrap: wrap;
+  padding: 20px 40px;
+}
+
+.content-container {
+  @include flex(flex-start, flex-start, column, 5px);
+
+  img {
+    width: 300px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+  }
+
+  span {
+    @include font(12px, 400, $main-color);
+    border: 1px solid $main-color;
+    padding: 4px 5px;
+    border-radius: 3px;
+  }
+
+  div {
+    @include font(18px, 600, white);
+  }
+
+  p {
+    @include font(12px, 400, $text-gray);
+  }
+}
